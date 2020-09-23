@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Vaccinator</string>
+    <string name="login">Log In</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_passwrd">Password</string>
+    <string name="forgot">Forgot Password?</string>
+    <string name="no_Ac">No account yet?</string>
+    <string name="slogan">Children are the hands by which </string>
+    <string name="slogan2">we take hold of  heaven</string>
+    <string name="create_ac">Create Account</string>
+    <string name="tmp_name">Ali Rehan</string>
+    <string name="tmp_email">alirehan@gmail.com</string>
+    <string name="phone">0301-4587654</string>
+    <string name="cnic">34101-0753474-4</string>
+    <string name="location">Lahore Pakistan</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="name">Name</string>
+    <string name="tmp_phone">Phone</string>
+    <string name="cnic_name">CNIC</string>
+    <string name="location_name">Location</string>
+    <string name="user_id">4101410141</string>
+    <string name="Personal">Profile</string>
+    <string name="reg">Team</string>
+    <string name="child">Registration</string>
+    <string name="polio">Polio</string>
+    <string name="control">Data</string>
+    <string name="noti">Notifications</string>
+    <string name="history">History</string>
+    <string name="logout">Log Out</string>
+    <string name="job">Schedule</string>
+    <string name="re_passwrd">Confirm Password</string>
+    <string name="signup">Sign Up</string>
+    <string name="child_care">Child Care</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="vaccination">Vaccination</string>
+</resources>
