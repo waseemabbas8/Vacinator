@@ -4,7 +4,7 @@ import com.ChildHealthCareSystem.vaccinator.R
 import com.ChildHealthCareSystem.vaccinator.model.GridMenu
 
 
-class PrefRepository(){
+class PrefRepository(private val api :Api){
 
     fun DashboardItems() : List<GridMenu> = listOf(
         GridMenu(R.string.Personal.toString(),R.drawable.ic_user),
@@ -14,4 +14,5 @@ class PrefRepository(){
         GridMenu(R.string.job.toString(),R.drawable.ic_calendar),
         GridMenu(R.string.noti.toString(),R.drawable.ic_notifications)
     )
+    suspend fun login(username:String,password:String)=api.login(username,password)
 }

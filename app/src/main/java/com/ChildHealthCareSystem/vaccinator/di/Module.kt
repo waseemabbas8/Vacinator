@@ -3,7 +3,7 @@ package com.ChildHealthCareSystem.vaccinator.di
 
 import com.ChildHealthCareSystem.vaccinator.data.Api
 import com.ChildHealthCareSystem.vaccinator.data.PrefRepository
-import com.ChildHealthCareSystem.vaccinator.ui.home.common.loginViewModel
+import com.ChildHealthCareSystem.vaccinator.ui.home.common.LoginViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 private const val BASE_URL = "http://vaccinsystem.gearhostpreview.com/"
 val viewModelModule = module {
-       viewModel{loginViewModel(get())}
+       viewModel{ LoginViewModel(get()) }
 }
 
  val repositoryModule = module {
@@ -36,7 +36,7 @@ val viewModelModule = module {
              .build()
              .create(Api::class.java)
 
-     single { PrefRepository() }
+     single { PrefRepository(get()) }
      single{provideHttpClient()}
      single { GsonConverterFactory.create() }
      single { createCustomerApi(get(), get()) }
