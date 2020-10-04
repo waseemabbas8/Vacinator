@@ -9,4 +9,8 @@ class VacinatorDashboardViewModel(private val prefRepository: PrefRepository) : 
 
     val user = prefRepository.getUser()
 
+    fun logoutUser() {
+        prefRepository.deleteUser()
+    }
+
 }

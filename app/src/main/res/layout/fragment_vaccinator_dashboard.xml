@@ -26,6 +26,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_exit"
+            android:layout_marginEnd="@dimen/horizontal_margin"
+            app:layout_constraintTop_toTopOf="@id/user_photo"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/user_photo"
             android:layout_width="100dp"
