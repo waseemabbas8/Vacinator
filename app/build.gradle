@@ -11,7 +11,7 @@ android {
     buildToolsVersion "30.0.1"
 
     defaultConfig {
-        applicationId "com.ChildHealthCareSystem.vaccinator"
+        applicationId "com.childhealthcare.vaccinator"
         minSdkVersion 26
         targetSdkVersion 30
         versionCode 1

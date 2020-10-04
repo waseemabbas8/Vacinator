@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.home.common.VaccinatorDashboardFragment">
+    tools:context=".ui.home.VaccinatorDashboardFragment">
 
     <data>
         <variable
-            name="PreRepository"
-            type="com.ChildHealthCareSystem.vaccinator.data.PrefRepository" />
+            name="viewModel"
+            type="com.childhealthcare.vaccinator.ui.home.VacinatorDashboardViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -71,9 +71,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:hasFixSize="@{true}"
-            app:itemsList="@{PreRepository.DashboardItems}"
+            app:itemsList="@{viewModel.dashboardItems}"
             itemLayout="@{@layout/item_dashboard_list}"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/bg_top_header"
             app:layout_constraintVertical_bias="0.0"

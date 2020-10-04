@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ChildHealthCareSystem.vaccinator">
+    package="com.childhealthcare.vaccinator">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:name=".Vaccinator"
+        android:name="com.childhealthcare.vaccinator.Vaccinator"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.home.common.LoginActivity" android:windowSoftInputMode="adjustResize">
+        <activity android:name="com.childhealthcare.vaccinator.LoginActivity" android:windowSoftInputMode="adjustResize">
 
         </activity>
         <activity
-            android:name=".SplashActivity"
+            android:name="com.childhealthcare.vaccinator.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name="com.childhealthcare.vaccinator.MainActivity">
 
         </activity>
     </application>

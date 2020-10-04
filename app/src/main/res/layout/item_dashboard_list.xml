@@ -6,7 +6,7 @@
     <data>
         <variable
             name="obj"
-            type="com.ChildHealthCareSystem.vaccinator.model.GridMenu" />
+            type="com.childhealthcare.vaccinator.model.GridMenu" />
     </data>
 
     <androidx.cardview.widget.CardView

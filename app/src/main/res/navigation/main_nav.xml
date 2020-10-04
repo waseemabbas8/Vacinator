@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/vaccinatorDashboardFragment"
-        android:name="com.ChildHealthCareSystem.vaccinator.ui.home.common.VaccinatorDashboardFragment"
+        android:name="com.childhealthcare.vaccinator.ui.home.VaccinatorDashboardFragment"
         android:label="fragment_vaccinator_dashboard"
         tools:layout="@layout/fragment_vaccinator_dashboard" />
 </navigation>
