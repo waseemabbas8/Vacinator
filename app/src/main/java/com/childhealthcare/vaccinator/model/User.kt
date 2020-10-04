@@ -5,7 +5,7 @@ data class User(
     val CNIC: String,
     val Gender: String,
     val Id: Int,
-    val Mobile: Double,
+    val Mobile: String,
     val Name: String,
     val Password: String,
     val UC: Int,

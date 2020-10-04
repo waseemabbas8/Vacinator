@@ -3,12 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/vaccinatorDashboardFragment"
+    app:startDestination="@id/dest_vaccinator_dashboard"
     >
 
     <fragment
-        android:id="@+id/vaccinatorDashboardFragment"
+        android:id="@+id/dest_vaccinator_dashboard"
         android:name="com.childhealthcare.vaccinator.ui.home.VaccinatorDashboardFragment"
         android:label="fragment_vaccinator_dashboard"
-        tools:layout="@layout/fragment_vaccinator_dashboard" />
+        tools:layout="@layout/fragment_vaccinator_dashboard" >
+        <action
+            android:id="@+id/action_dest_vaccinator_dashboard_to_dest_profile"
+            app:destination="@id/dest_profile" />
+        <action
+            android:id="@+id/action_dest_vaccinator_dashboard_to_dest_children"
+            app:destination="@id/dest_children" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_profile"
+        android:name="com.childhealthcare.vaccinator.ui.account.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/dest_children"
+        android:name="com.childhealthcare.vaccinator.ui.common.ChildrenListFragment"
+        android:label="fragment_children_list"
+        tools:layout="@layout/fragment_children_list" />
 </navigation>

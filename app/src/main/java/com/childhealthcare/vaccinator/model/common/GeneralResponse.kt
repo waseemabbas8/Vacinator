@@ -1,4 +1,4 @@
-package com.childhealthcare.vaccinator.model
+package com.childhealthcare.vaccinator.model.common
 
 data class GeneralResponse (
     val code: Int,

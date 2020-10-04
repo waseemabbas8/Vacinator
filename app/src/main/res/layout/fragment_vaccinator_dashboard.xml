@@ -8,6 +8,9 @@
         <variable
             name="viewModel"
             type="com.childhealthcare.vaccinator.ui.home.VacinatorDashboardViewModel" />
+        <variable
+            name="onItemClick"
+            type="com.childhealthcare.vaccinator.ui.home.VaccinatorDashboardFragment.OnDashboardItemClick" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,8 +44,9 @@
             android:layout_marginStart="18dp"
             android:layout_marginLeft="18dp"
             android:layout_marginTop="75dp"
-            android:text="@string/tmp_name"
-            android:textColor="@color/black"
+            android:textAllCaps="true"
+            android:text="@{viewModel.user.name, default = Ali}"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/user_photo"
@@ -55,8 +59,8 @@
             android:layout_marginStart="18dp"
             android:layout_marginLeft="18dp"
             android:layout_marginTop="32dp"
-            android:text="@string/user_id"
-            android:textColor="@color/black"
+            android:text="@{viewModel.user.mobile, default=0302188898}"
+            android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@id/user_photo"
             app:layout_constraintTop_toTopOf="@id/user_name" />
@@ -72,7 +76,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:hasFixSize="@{true}"
             app:itemsList="@{viewModel.dashboardItems}"
-            itemLayout="@{@layout/item_dashboard_list}"
+            app:itemLayout="@{@layout/item_dashboard_list}"
+            app:itemClickListener="@{onItemClick}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/bg_top_header"
             app:layout_constraintVertical_bias="0.0"

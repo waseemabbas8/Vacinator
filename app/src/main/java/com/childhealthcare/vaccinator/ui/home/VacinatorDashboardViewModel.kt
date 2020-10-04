@@ -7,4 +7,6 @@ class VacinatorDashboardViewModel(private val prefRepository: PrefRepository) : 
 
     val dashboardItems = prefRepository.getDashboardItems()
 
+    val user = prefRepository.getUser()
+
 }

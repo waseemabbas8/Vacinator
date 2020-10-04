@@ -7,7 +7,7 @@ import com.childhealthcare.vaccinator.data.ApiRepository
 import com.childhealthcare.vaccinator.data.PrefRepository
 import com.childhealthcare.vaccinator.data.RESPONSE_CODE_ERROR
 import com.childhealthcare.vaccinator.data.RESPONSE_CODE_OK
-import com.childhealthcare.vaccinator.model.GeneralResponse
+import com.childhealthcare.vaccinator.model.common.GeneralResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,8 +25,9 @@ class LoginViewModel(
                     repository.login(userName, password)
                 if (response.isSuccessful) {
                     response.body()?.let {
-                        prefRepository.saveUser(it)
-                        result.postValue(GeneralResponse(RESPONSE_CODE_OK, ""))
+                        if (it.code == RESPONSE_CODE_OK)
+                            prefRepository.saveUser(it.data)
+                        result.postValue(GeneralResponse(it.code, it.message))
                     }
                 }
             } catch (e: Exception) {

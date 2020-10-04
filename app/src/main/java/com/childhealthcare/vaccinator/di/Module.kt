@@ -5,6 +5,8 @@ import com.childhealthcare.vaccinator.data.Api
 import com.childhealthcare.vaccinator.data.ApiRepository
 import com.childhealthcare.vaccinator.data.PrefRepository
 import com.childhealthcare.vaccinator.ui.account.LoginViewModel
+import com.childhealthcare.vaccinator.ui.account.ProfileViewModel
+import com.childhealthcare.vaccinator.ui.common.ChildrenListViewModel
 import com.childhealthcare.vaccinator.ui.home.VacinatorDashboardViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -20,6 +22,8 @@ private const val BASE_URL = "http://vaccinsystem.gearhostpreview.com/"
 val viewModelModule = module {
     viewModel { LoginViewModel(get(), get()) }
     viewModel { VacinatorDashboardViewModel(get()) }
+    viewModel { ProfileViewModel(get()) }
+    viewModel { ChildrenListViewModel(get(), get()) }
 }
 
 val repositoryModule = module {

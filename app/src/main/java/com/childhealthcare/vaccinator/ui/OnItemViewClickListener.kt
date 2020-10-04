@@ -1,4 +1,4 @@
-package com.softsolutions.ui
+package com.childhealthcare.vaccinator.ui
 
 import android.view.View
 

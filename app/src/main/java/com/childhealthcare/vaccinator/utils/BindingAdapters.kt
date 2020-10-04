@@ -14,9 +14,10 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
-import com.softsolutions.ui.GenericRecyclerViewAdapter
-import com.softsolutions.ui.OnItemViewClickListener
-import com.softsolutions.ui.OnListItemClickListener
+import com.childhealthcare.vaccinator.R
+import com.childhealthcare.vaccinator.ui.GenericRecyclerViewAdapter
+import com.childhealthcare.vaccinator.ui.OnItemViewClickListener
+import com.childhealthcare.vaccinator.ui.OnListItemClickListener
 import de.hdodenhof.circleimageview.CircleImageView
 
 //@BindingAdapter("imageTint")
@@ -133,57 +134,15 @@ fun <T> setItems(
     view.setHasFixedSize(hasFixSize)
 }
 
-//@BindingAdapter(value = ["itemsList", "isSpinner"], requireAll = false)
-//fun <T> setSpinnerItems(view: AutoCompleteTextView, items: List<T>, isSpinner: Boolean = false) {
-//    val adapter = ArrayAdapter<T>(
-//        view.context,
-//        android.R.layout.simple_spinner_dropdown_item, items
-//    )
-//    view.setAdapter(adapter)
-//    if (isSpinner) {
-//        view.setOnClickListener { view.showDropDown() } //show drop down like spinner
-//    } else if (view is MultiAutoCompleteTextView) {
-//        view.setTokenizer(MultiAutoCompleteTextView.CommaTokenizer())
-//    }
-//}
-
-//@BindingAdapter(value = ["spItemsList", "isSmall"], requireAll = false)
-//fun <T> setSpinnerItems(view: Spinner, spItemsList: List<T>, isSmall: Boolean = false) {
-//    val headerLayout: Int
-//    val spinnerItem: Int
-//    if (isSmall) {
-//        headerLayout = R.layout.item_spinner_header_small
-//        spinnerItem = R.layout.item_spinner_small
-//    } else {
-//        headerLayout = R.layout.item_spinner_header
-//        spinnerItem = R.layout.item_spinner
-//    }
-//    val adapter = ArrayAdapter(
-//        view.context,
-//        headerLayout, R.id.text1, spItemsList
-//    )
-//    adapter.setDropDownViewResource(spinnerItem)
-//    view.adapter = adapter
-//}
-
-//@BindingAdapter(value = ["spItemsList", "isSmall"], requireAll = false)
-//fun <T> setSpinnerItems(view: MaterialSpinner, spItemsList: List<T>, isSmall: Boolean = false) {
-//    val headerLayout: Int
-//    val spinnerItem: Int
-//    if (isSmall) {
-//        headerLayout = R.layout.item_spinner_header_small
-//        spinnerItem = R.layout.item_spinner_small
-//    } else {
-//        headerLayout = R.layout.item_spinner_header
-//        spinnerItem = R.layout.item_spinner
-//    }
-//    val adapter = ArrayAdapter(
-//        view.context,
-//        headerLayout, R.id.text1, spItemsList
-//    )
-//    adapter.setDropDownViewResource(spinnerItem)
-//    view.adapter = adapter
-//}
+@BindingAdapter("spItemsList")
+fun <T> setSpinnerItems(view: Spinner, spItemsList: List<T>) {
+    val adapter = ArrayAdapter(
+        view.context,
+        R.layout.item_spinner_header, R.id.text1, spItemsList
+    )
+    adapter.setDropDownViewResource(R.layout.item_spinner)
+    view.adapter = adapter
+}
 
 @BindingAdapter("currentItem")
 fun setCurrentItem(view: Spinner, currentItem: Int) {

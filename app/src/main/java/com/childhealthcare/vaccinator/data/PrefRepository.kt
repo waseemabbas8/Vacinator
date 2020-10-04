@@ -15,12 +15,12 @@ class PrefRepository(private val app: Application){
     private val pref = app.getSharedPreferences(APP_TAG, Context.MODE_PRIVATE)
 
     fun getDashboardItems() : List<GridMenu> = listOf(
-        GridMenu(R.string.Personal.toString(),R.drawable.ic_user),
-        GridMenu(R.string.vaccination.toString(),R.drawable.ic_vaccine),
-        GridMenu(R.string.polio.toString(),R.drawable.ic_polio),
-        GridMenu(R.string.child.toString(),R.drawable.ic_child),
-        GridMenu(R.string.job.toString(),R.drawable.ic_calendar),
-        GridMenu(R.string.noti.toString(),R.drawable.ic_notifications)
+        GridMenu(app.getString(R.string.Personal),R.drawable.ic_user),
+        GridMenu(app.getString(R.string.vaccination),R.drawable.ic_vaccine),
+        GridMenu(app.getString(R.string.polio),R.drawable.ic_polio),
+        GridMenu(app.getString(R.string.child),R.drawable.ic_child),
+        GridMenu(app.getString(R.string.job),R.drawable.ic_calendar),
+        GridMenu(app.getString(R.string.noti),R.drawable.ic_notifications)
     )
 
     fun saveUser(user: User) {
