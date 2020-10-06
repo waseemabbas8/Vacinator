@@ -23,7 +23,9 @@ val viewModelModule = module {
     viewModel { LoginViewModel(get(), get()) }
     viewModel { VacinatorDashboardViewModel(get()) }
     viewModel { ProfileViewModel(get()) }
-    viewModel { ChildrenListViewModel(get(), get()) }
+    viewModel {(isVaccine: Boolean) ->
+        ChildrenListViewModel(get(), get(), isVaccine)
+    }
 }
 
 val repositoryModule = module {

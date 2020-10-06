@@ -15,7 +15,8 @@ import kotlinx.coroutines.launch
 
 class ChildrenListViewModel(
     private val repository: ApiRepository,
-    prefRepository: PrefRepository
+    prefRepository: PrefRepository,
+    val isVaccine: Boolean
 ) : ViewModel() {
 
     val ucId = prefRepository.getUser()?.UC ?: 0

@@ -15,12 +15,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <include
             android:id="@+id/toolbar_layout"
             layout="@layout/partial_toolbar"
             app:layout_constraintTop_toTopOf="parent"
-            app:titleStr="@{@string/app_name}" />
+            app:titleStr="@{viewModel.vaccine ? @string/vaccination : @string/polio}" />
 
         <EditText
             android:id="@+id/et_search"
@@ -60,14 +59,14 @@
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/vertical_margin"
             app:hasFixSize="@{true}"
-            app:itemLayout="@{@layout/item_children_list}"
+            app:itemLayout="@{viewModel.vaccine ? @layout/item_children_list_vac : @layout/item_children_list_polio}"
             app:itemsList="@{viewModel.children}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sp_mohallahs"
-            tools:listitem="@layout/item_children_list" />
+            tools:listitem="@layout/item_children_list_vac" />
 
         <ProgressBar
             android:layout_width="wrap_content"

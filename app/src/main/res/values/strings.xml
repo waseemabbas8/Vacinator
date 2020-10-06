@@ -31,9 +31,9 @@
     <string name="re_passwrd">Confirm Password</string>
     <string name="signup">Sign Up</string>
     <string name="child_care">Child Care</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="vaccination">Vaccination</string>
     <string name="hint_search">Search…</string>
     <string name="label_last_vaccination">Last Vaccination: </string>
+    <string name="label_last_polio_date">Last Polio: </string>
+
 </resources>

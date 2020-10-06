@@ -27,5 +27,10 @@
         android:id="@+id/dest_children"
         android:name="com.childhealthcare.vaccinator.ui.common.ChildrenListFragment"
         android:label="fragment_children_list"
-        tools:layout="@layout/fragment_children_list" />
+        tools:layout="@layout/fragment_children_list" >
+        <argument
+            android:name="isVaccine"
+            app:argType="boolean"
+            android:defaultValue="true" />
+    </fragment>
 </navigation>

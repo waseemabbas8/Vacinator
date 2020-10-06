@@ -11,12 +11,25 @@ import com.childhealthcare.vaccinator.databinding.FragmentChildrenListBinding
 import com.childhealthcare.vaccinator.model.Child
 import com.childhealthcare.vaccinator.ui.GenericRecyclerViewAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 
 class ChildrenListFragment : Fragment() {
 
     private lateinit var binding: FragmentChildrenListBinding
-    private val mViewModel: ChildrenListViewModel by viewModel()
+    private val mViewModel: ChildrenListViewModel by viewModel {
+        parametersOf(isVaccine)
+    }
+
+    private var isVaccine = true
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            val args = ChildrenListFragmentArgs.fromBundle(it)
+            isVaccine = args.isVaccine
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

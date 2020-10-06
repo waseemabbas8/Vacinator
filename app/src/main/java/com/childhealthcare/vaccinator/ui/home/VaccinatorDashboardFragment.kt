@@ -79,7 +79,12 @@ class VaccinatorDashboardFragment : Fragment() {
                 }
                 VACCINATION_INDEX -> {
                     val action =
-                        VaccinatorDashboardFragmentDirections.actionDestVaccinatorDashboardToDestChildren()
+                        VaccinatorDashboardFragmentDirections.actionDestVaccinatorDashboardToDestChildren(true)
+                    binding.root.findNavController().navigate(action)
+                }
+                POLIO_INDEX -> {
+                    val action =
+                        VaccinatorDashboardFragmentDirections.actionDestVaccinatorDashboardToDestChildren(false)
                     binding.root.findNavController().navigate(action)
                 }
             }
