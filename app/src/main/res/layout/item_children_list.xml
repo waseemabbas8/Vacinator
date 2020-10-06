@@ -8,48 +8,49 @@
             type="com.childhealthcare.vaccinator.model.Child" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginEnd="@dimen/horizontal_margin">
 
-        <ImageView
-            android:id="@+id/check"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_uncheck_circle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/vertical_margin" />
+            android:padding="@dimen/standard_margin">
 
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@{obj.name, default = child}"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@id/check"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/check"
-            app:layout_constraintBottom_toBottomOf="@id/check"
-            android:layout_marginStart="@dimen/horizontal_margin"/>
+            <ImageView
+                android:id="@+id/check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@{obj.polioStatus ? @drawable/ic_check_circle : @drawable/ic_uncheck_circle}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="@dimen/standard_margin" />
 
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{@string/label_last_vaccination + obj.lastVaccinationDate, default = date}"
-            app:layout_constraintStart_toStartOf="@id/name"
-            app:layout_constraintTop_toBottomOf="@id/name"/>
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{obj.name, default = child}"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@id/check"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/check"
+                app:layout_constraintBottom_toBottomOf="@id/check"
+                android:layout_marginStart="@dimen/horizontal_margin"/>
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:background="@color/color_grey"
-            android:layout_marginTop="@dimen/standard_margin"
-            app:layout_constraintStart_toStartOf="@id/check"
-            app:layout_constraintEnd_toEndOf="@id/name"
-            app:layout_constraintTop_toBottomOf="@id/date"/>
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/label_last_vaccination + obj.lastDate, default = date}"
+                app:layout_constraintStart_toStartOf="@id/name"
+                app:layout_constraintTop_toBottomOf="@id/name"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </layout>

@@ -5,6 +5,7 @@
     tools:context=".ui.common.ChildrenListFragment">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.childhealthcare.vaccinator.ui.common.ChildrenListViewModel" />
@@ -18,8 +19,8 @@
         <include
             android:id="@+id/toolbar_layout"
             layout="@layout/partial_toolbar"
-            app:titleStr="@{@string/app_name}"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleStr="@{@string/app_name}" />
 
         <EditText
             android:id="@+id/et_search"
@@ -28,8 +29,8 @@
             android:layout_marginStart="@dimen/horizontal_margin"
             android:layout_marginTop="@dimen/vertical_margin"
             android:layout_marginEnd="@dimen/horizontal_margin"
-            android:inputType="textPersonName"
             android:hint="@string/hint_search"
+            android:inputType="textPersonName"
             android:text="@={viewModel.searchText}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,10 +41,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/vertical_margin"
-            app:spItemsList="@{viewModel.mohallahs}"
             app:layout_constraintEnd_toEndOf="@+id/et_search"
             app:layout_constraintStart_toStartOf="@+id/et_search"
-            app:layout_constraintTop_toBottomOf="@+id/et_search" />
+            app:layout_constraintTop_toBottomOf="@+id/et_search"
+            app:spItemsList="@{viewModel.mohallahs}" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/color_grey"
+            app:layout_constraintTop_toBottomOf="@id/sp_mohallahs"
+            app:layout_constraintStart_toStartOf="@id/sp_mohallahs"
+            app:layout_constraintEnd_toEndOf="@id/sp_mohallahs"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_children_list"
@@ -53,20 +62,21 @@
             app:hasFixSize="@{true}"
             app:itemLayout="@{@layout/item_children_list}"
             app:itemsList="@{viewModel.children}"
-            tools:listitem="@layout/item_children_list"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/sp_mohallahs"
-            app:layout_constraintStart_toStartOf="@+id/sp_mohallahs"
-            app:layout_constraintTop_toBottomOf="@+id/sp_mohallahs" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sp_mohallahs"
+            tools:listitem="@layout/item_children_list" />
 
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="@{viewModel.progressbarVisibility}"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

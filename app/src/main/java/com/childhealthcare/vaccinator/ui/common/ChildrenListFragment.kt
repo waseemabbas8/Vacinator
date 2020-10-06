@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import com.childhealthcare.vaccinator.R
 import com.childhealthcare.vaccinator.databinding.FragmentChildrenListBinding
 import com.childhealthcare.vaccinator.model.Child
@@ -24,6 +25,16 @@ class ChildrenListFragment : Fragment() {
         binding = FragmentChildrenListBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
 
+        binding.spMohallahs.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                mViewModel.mohId = mViewModel.mohallahs.value?.get(position)?.id ?: 0
+
+                mViewModel.getChildrenList()
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {}
+
+        }
         return binding.root
     }
 
@@ -32,7 +43,6 @@ class ChildrenListFragment : Fragment() {
         binding.viewModel = mViewModel
 
         mViewModel.searchText.observe(viewLifecycleOwner, {
-            if (it.isNullOrEmpty()) return@observe
             (binding.rvChildrenList.adapter as GenericRecyclerViewAdapter<*>).filter(it)
         })
     }
