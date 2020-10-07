@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import androidx.navigation.findNavController
 import com.childhealthcare.vaccinator.R
 import com.childhealthcare.vaccinator.databinding.FragmentChildrenListBinding
 import com.childhealthcare.vaccinator.model.Child
 import com.childhealthcare.vaccinator.ui.GenericRecyclerViewAdapter
+import com.childhealthcare.vaccinator.ui.OnListItemClickListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -54,10 +56,19 @@ class ChildrenListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = mViewModel
+        binding.onChildClick = OnChildClick()
 
         mViewModel.searchText.observe(viewLifecycleOwner, {
             (binding.rvChildrenList.adapter as GenericRecyclerViewAdapter<*>).filter(it)
         })
+    }
+
+    inner class OnChildClick : OnListItemClickListener<Child> {
+        override fun onItemClick(item: Child, pos: Int) {
+            val action = ChildrenListFragmentDirections.actionDestChildrenToDestChild(item.id)
+            binding.root.findNavController().navigate(action)
+        }
+
     }
 
 }

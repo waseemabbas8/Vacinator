@@ -43,6 +43,7 @@
                 android:gravity="center"
                 android:layout_margin="5dp"
                 android:text="@{obj.name}"
+                android:fontFamily="@font/poppins"
                 android:paddingBottom="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

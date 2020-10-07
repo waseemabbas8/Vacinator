@@ -32,5 +32,17 @@
             android:name="isVaccine"
             app:argType="boolean"
             android:defaultValue="true" />
+        <action
+            android:id="@+id/action_dest_children_to_dest_child"
+            app:destination="@id/dest_child" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_child"
+        android:name="com.childhealthcare.vaccinator.ui.common.ChildFragment"
+        android:label="fragment_child"
+        tools:layout="@layout/fragment_child" >
+        <argument
+            android:name="childId"
+            app:argType="integer" />
     </fragment>
 </navigation>

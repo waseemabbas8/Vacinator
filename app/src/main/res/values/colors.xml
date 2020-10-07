@@ -14,4 +14,5 @@
     <color name="yellow">#FFC107</color>
     <color name="dark_blue">#175BE7</color>
     <color name="create">#FF01BAEF</color>
+    <color name="colorPrimaryLight">#01B5A1</color>
 </resources>

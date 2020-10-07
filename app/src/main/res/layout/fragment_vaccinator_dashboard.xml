@@ -38,8 +38,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/user_photo"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_marginStart="26dp"
             android:layout_marginLeft="26dp"
             android:layout_marginTop="50dp"
@@ -59,6 +59,7 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:fontFamily="@font/poppins_semibold"
             app:layout_constraintStart_toEndOf="@id/user_photo"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,6 +73,7 @@
             android:text="@{viewModel.user.mobile, default=0302188898}"
             android:textColor="@color/white"
             android:textSize="16sp"
+            android:fontFamily="@font/poppins"
             app:layout_constraintStart_toEndOf="@id/user_photo"
             app:layout_constraintTop_toTopOf="@id/user_name" />
 

@@ -35,5 +35,11 @@
     <string name="hint_search">Search…</string>
     <string name="label_last_vaccination">Last Vaccination: </string>
     <string name="label_last_polio_date">Last Polio: </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="label_polio_status">Polio Status</string>
+    <string name="label_upcoming">Upcoming</string>
+    <string name="label_vaccinations">Vaccinations</string>
+    <string name="label_add_vaccine">Add Vaccine</string>
 
 </resources>

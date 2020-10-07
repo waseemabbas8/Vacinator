@@ -33,6 +33,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/toolbar_text_size"
             android:text="@{titleStr, default = title}"
+            android:fontFamily="@font/poppins_semibold"
             android:layout_marginStart="@dimen/standard_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

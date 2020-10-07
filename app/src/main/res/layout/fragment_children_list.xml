@@ -7,6 +7,10 @@
     <data>
 
         <variable
+            name="onChildClick"
+            type="com.childhealthcare.vaccinator.ui.common.ChildrenListFragment.OnChildClick" />
+
+        <variable
             name="viewModel"
             type="com.childhealthcare.vaccinator.ui.common.ChildrenListViewModel" />
     </data>
@@ -31,6 +35,8 @@
             android:hint="@string/hint_search"
             android:inputType="textPersonName"
             android:text="@={viewModel.searchText}"
+            android:fontFamily="@font/poppins"
+            android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_layout" />
@@ -39,6 +45,7 @@
             android:id="@+id/sp_mohallahs"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
             android:layout_marginTop="@dimen/vertical_margin"
             app:layout_constraintEnd_toEndOf="@+id/et_search"
             app:layout_constraintStart_toStartOf="@+id/et_search"
@@ -61,6 +68,7 @@
             app:hasFixSize="@{true}"
             app:itemLayout="@{viewModel.vaccine ? @layout/item_children_list_vac : @layout/item_children_list_polio}"
             app:itemsList="@{viewModel.children}"
+            app:itemClickListener="@{onChildClick}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

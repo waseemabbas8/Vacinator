@@ -27,4 +27,9 @@ interface Api {
         @Query("ucid") ucId: Int
     ): Response<List<Mohallah>>
 
+    @GET("GetSingleChildDetail")
+    suspend fun getChildDetails(
+        @Query("id") childId: Int
+    ): Response<Child>
+
 }

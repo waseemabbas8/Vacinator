@@ -123,11 +123,11 @@ fun gotoNextEditText(
     requireAll = false
 )
 fun <T> setItems(
-    view: RecyclerView, itemsList: List<T>, layout: Int,
+    view: RecyclerView, itemsList: List<T>?, layout: Int,
     itemClickListener: OnListItemClickListener<T>?, hasFixSize: Boolean = false,
     onItemViewClick: OnItemViewClickListener<T>?
 ) {
-    val mAdapter = GenericRecyclerViewAdapter(itemsList, layout)
+    val mAdapter = GenericRecyclerViewAdapter(itemsList ?: emptyList(), layout)
     view.adapter = mAdapter
     mAdapter.setItemClickListener(itemClickListener)
     mAdapter.onItemViewClick = onItemViewClick

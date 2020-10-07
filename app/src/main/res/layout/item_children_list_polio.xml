@@ -18,7 +18,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/standard_margin">
+            android:padding="@dimen/standard_margin"
+            android:background="?attr/selectableItemBackground">
 
             <ImageView
                 android:id="@+id/check"
@@ -33,18 +34,20 @@
                 android:id="@+id/name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/horizontal_margin"
                 android:text="@{obj.name, default = child}"
                 android:textColor="@color/black"
-                app:layout_constraintStart_toEndOf="@id/check"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/check"
+                android:fontFamily="@font/poppins_semibold"
                 app:layout_constraintBottom_toBottomOf="@id/check"
-                android:layout_marginStart="@dimen/horizontal_margin"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/check"
+                app:layout_constraintTop_toTopOf="@id/check" />
 
             <TextView
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
                 android:text="@{@string/label_last_polio_date + obj.lastDate, default = date}"
                 app:layout_constraintStart_toStartOf="@id/name"
                 app:layout_constraintTop_toBottomOf="@id/name"/>

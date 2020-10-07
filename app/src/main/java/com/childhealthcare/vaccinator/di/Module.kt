@@ -6,6 +6,7 @@ import com.childhealthcare.vaccinator.data.ApiRepository
 import com.childhealthcare.vaccinator.data.PrefRepository
 import com.childhealthcare.vaccinator.ui.account.LoginViewModel
 import com.childhealthcare.vaccinator.ui.account.ProfileViewModel
+import com.childhealthcare.vaccinator.ui.common.ChildViewModel
 import com.childhealthcare.vaccinator.ui.common.ChildrenListViewModel
 import com.childhealthcare.vaccinator.ui.home.VacinatorDashboardViewModel
 import okhttp3.OkHttpClient
@@ -25,6 +26,9 @@ val viewModelModule = module {
     viewModel { ProfileViewModel(get()) }
     viewModel {(isVaccine: Boolean) ->
         ChildrenListViewModel(get(), get(), isVaccine)
+    }
+    viewModel { (childId: Int) ->
+        ChildViewModel(get(), childId)
     }
 }
 
