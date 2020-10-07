@@ -1,43 +1,26 @@
-package com.childhealthcare.vaccinator.ui.common
+package com.childhealthcare.vaccinator.ui.schedule
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.childhealthcare.vaccinator.R
+import androidx.fragment.app.Fragment
 import com.childhealthcare.vaccinator.data.RESPONSE_CODE_ERROR
-import com.childhealthcare.vaccinator.databinding.FragmentChildBinding
+import com.childhealthcare.vaccinator.databinding.FragmentTasksListBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.parameter.parametersOf
 
+class TasksListFragment : Fragment() {
 
-class ChildFragment : Fragment() {
-
-    private lateinit var binding: FragmentChildBinding
-    private val mViewModel: ChildViewModel by viewModel{
-        parametersOf(childId)
-    }
-
-    private var childId = 0
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            val args = ChildFragmentArgs.fromBundle(it)
-            childId = args.childId
-        }
-    }
+    private lateinit var binding: FragmentTasksListBinding
+    private val mViewModel: TasksListViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentChildBinding.inflate(inflater, container, false)
+        binding = FragmentTasksListBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
-
-        binding.rvVaccinations.isNestedScrollingEnabled = false
 
         return binding.root
     }
@@ -45,6 +28,8 @@ class ChildFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = mViewModel
+
+        mViewModel.getTasksList()
 
         mViewModel.generalResponse.observe(viewLifecycleOwner, {
             if (it == null) return@observe

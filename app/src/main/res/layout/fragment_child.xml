@@ -379,6 +379,7 @@
                                 android:textColor="@color/white"
                                 android:textSize="12sp"
                                 android:fontFamily="@font/poppins"
+                                android:onClick="@{() -> viewModel.addVaccination()}"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"/>
 

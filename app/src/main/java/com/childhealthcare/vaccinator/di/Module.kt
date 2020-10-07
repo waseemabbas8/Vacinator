@@ -9,6 +9,7 @@ import com.childhealthcare.vaccinator.ui.account.ProfileViewModel
 import com.childhealthcare.vaccinator.ui.common.ChildViewModel
 import com.childhealthcare.vaccinator.ui.common.ChildrenListViewModel
 import com.childhealthcare.vaccinator.ui.home.VacinatorDashboardViewModel
+import com.childhealthcare.vaccinator.ui.schedule.TasksListViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
@@ -28,8 +29,9 @@ val viewModelModule = module {
         ChildrenListViewModel(get(), get(), isVaccine)
     }
     viewModel { (childId: Int) ->
-        ChildViewModel(get(), childId)
+        ChildViewModel(get(), get<PrefRepository>().getUser()!!, childId)
     }
+    viewModel { TasksListViewModel(get(), get<PrefRepository>().getUser()?.Id ?: 0) }
 }
 
 val repositoryModule = module {

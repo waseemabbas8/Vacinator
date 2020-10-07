@@ -1,12 +1,10 @@
 package com.childhealthcare.vaccinator.data
 
-import com.childhealthcare.vaccinator.model.Child
-import com.childhealthcare.vaccinator.model.Mohallah
-import com.childhealthcare.vaccinator.model.User
+import com.childhealthcare.vaccinator.model.*
 import com.childhealthcare.vaccinator.model.common.BaseResponse
+import com.childhealthcare.vaccinator.model.common.GeneralResponse
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface Api {
 
@@ -32,4 +30,24 @@ interface Api {
         @Query("id") childId: Int
     ): Response<Child>
 
+    @POST("AddVaccination")
+    suspend fun addVaccination(
+        @Query("cid") childId: Int,
+        @Query("vid") vaccinatorId: Int
+    ): Response<GeneralResponse>
+
+    @GET("GetVaccinatorTaskList")
+    suspend fun getTasksList(
+        @Query("vid") vaccinatorId: Int
+    ): Response<BaseResponse<List<TodoTask>>>
+
+    @POST("AddVaccinatorTask")
+    suspend fun addVaccinatorTask(
+        @Body task: TodoTask
+    ): Response<GeneralResponse>
+
+    @GET("GetListofQueriesByCouncilId")
+    suspend fun getQueriesByCouncilId(
+        @Query("ucid") ucId: Int
+    ): Response<BaseResponse<List<QueryModel>>>
 }

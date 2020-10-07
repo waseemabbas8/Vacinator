@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_dest_vaccinator_dashboard_to_dest_children"
             app:destination="@id/dest_children" />
+        <action
+            android:id="@+id/action_dest_vaccinator_dashboard_to_dest_tasks_list"
+            app:destination="@id/dest_tasks_list" />
     </fragment>
     <fragment
         android:id="@+id/dest_profile"
@@ -45,4 +48,9 @@
             android:name="childId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/dest_tasks_list"
+        android:name="com.childhealthcare.vaccinator.ui.schedule.TasksListFragment"
+        android:label="fragment_tasks_list"
+        tools:layout="@layout/fragment_tasks_list" />
 </navigation>

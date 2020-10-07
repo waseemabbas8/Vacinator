@@ -1,4 +1,4 @@
-package com.childhealthcare.vaccinator.ui.common
+package com.childhealthcare.vaccinator.ui.schedule
 
 import android.view.View
 import androidx.annotation.WorkerThread
@@ -8,21 +8,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.childhealthcare.vaccinator.data.ApiRepository
 import com.childhealthcare.vaccinator.data.RESPONSE_CODE_ERROR
-import com.childhealthcare.vaccinator.model.Child
-import com.childhealthcare.vaccinator.model.User
+import com.childhealthcare.vaccinator.model.TodoTask
 import com.childhealthcare.vaccinator.model.common.GeneralResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class ChildViewModel(
+class TasksListViewModel(
     private val apiRepository: ApiRepository,
-    private val user: User,
-    private val childId: Int
+    private val vaccinatorId: Int
 ) : ViewModel() {
 
-    val child: LiveData<Child>
-    private val _child = MutableLiveData<Child>()
+    val tasks: LiveData<List<TodoTask>>
+    private val _tasks = MutableLiveData<List<TodoTask>>()
 
     val progressbarVisibility: LiveData<Int>
     private val _progressbarVisibility = MutableLiveData<Int>()
@@ -31,22 +29,19 @@ class ChildViewModel(
     private val _generalResponse = MutableLiveData<GeneralResponse>()
 
     init {
-        child = _child
+        tasks = _tasks
         progressbarVisibility = _progressbarVisibility
         generalResponse = _generalResponse
-
-        getChildDetails()
     }
 
-    @WorkerThread
-    private fun getChildDetails() {
+    fun getTasksList() {
         viewModelScope.launch(Dispatchers.IO) {
             _progressbarVisibility.postValue(View.VISIBLE)
             try {
-                val response = apiRepository.getChildDetails(childId)
+                val response = apiRepository.getTasksList(vaccinatorId)
                 if (response.isSuccessful) {
                     response.body()?.let {
-                        _child.postValue(it)
+                        _tasks.postValue(it.data)
                     }
                 }
             } catch (e: Exception) {
@@ -58,25 +53,5 @@ class ChildViewModel(
         }
     }
 
-    @WorkerThread
-    fun addVaccination() {
-        viewModelScope.launch(Dispatchers.IO) {
-            _progressbarVisibility.postValue(View.VISIBLE)
-            try {
-                val response = apiRepository.addVaccination(childId, user.Id)
-                if (response.isSuccessful) {
-                    response.body()?.let {
-                        getChildDetails()
-                        _generalResponse.postValue(it)
-                    }
-                }
-            } catch (e: Exception) {
-                _generalResponse.postValue(GeneralResponse(RESPONSE_CODE_ERROR, e.message ?: "ERROR"))
-            } catch (t: Throwable) {
-                _generalResponse.postValue(GeneralResponse(RESPONSE_CODE_ERROR, t.message ?: "ERROR"))
-            }
-            _progressbarVisibility.postValue(View.GONE)
-        }
-    }
 
 }

@@ -12,7 +12,8 @@
         android:layout_marginStart="@dimen/horizontal_margin"
         android:layout_marginEnd="@dimen/horizontal_margin"
         android:text="Item"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins"/>
 
     <View
         android:layout_width="match_parent"
