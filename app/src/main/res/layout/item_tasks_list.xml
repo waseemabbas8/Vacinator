@@ -23,7 +23,6 @@
             android:paddingStart="@dimen/horizontal_margin"
             android:paddingEnd="@dimen/horizontal_margin">
 
-
             <TextView
                 android:id="@+id/desciption"
                 android:layout_width="0dp"

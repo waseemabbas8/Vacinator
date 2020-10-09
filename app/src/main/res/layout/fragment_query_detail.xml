@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.query.QueryDetailFragment">
+
+    <data>
+
+        <variable
+            name="obj"
+            type="com.childhealthcare.vaccinator.model.QueryModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar_layout"
+            layout="@layout/partial_toolbar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleStr="@{@string/title_query}" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_layout">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="@dimen/horizontal_margin"
+                    android:layout_marginTop="@dimen/vertical_margin"
+                    android:background="@drawable/ic_uncheck_circle"
+                    android:padding="@dimen/standard_margin"
+                    android:src="@drawable/ic_user"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/standard_margin"
+                    android:layout_marginEnd="@dimen/horizontal_margin"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:maxLines="1"
+                    android:text="@{obj.name, default = Ali}"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/image"
+                    app:layout_constraintTop_toTopOf="@id/image" />
+
+                <TextView
+                    android:id="@+id/label_cnic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/standard_margin"
+                    android:fontFamily="@font/poppins"
+                    android:text="CNIC:"
+                    app:layout_constraintStart_toStartOf="@+id/name"
+                    app:layout_constraintTop_toBottomOf="@+id/name" />
+
+                <TextView
+                    android:id="@+id/cnic"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/standard_margin"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@{obj.cNIC, default = 0000}"
+                    app:layout_constraintEnd_toEndOf="@+id/name"
+                    app:layout_constraintStart_toEndOf="@+id/label_cnic"
+                    app:layout_constraintTop_toTopOf="@+id/label_cnic" />
+
+                <TextView
+                    android:id="@+id/label_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/standard_margin"
+                    android:fontFamily="@font/poppins"
+                    android:text="Phone:"
+                    app:layout_constraintStart_toStartOf="@+id/label_cnic"
+                    app:layout_constraintTop_toBottomOf="@+id/label_cnic" />
+
+                <TextView
+                    android:id="@+id/phone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/standard_margin"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@{obj.mobile, default = 0000}"
+                    app:layout_constraintEnd_toEndOf="@+id/cnic"
+                    app:layout_constraintStart_toEndOf="@+id/label_phone"
+                    app:layout_constraintTop_toTopOf="@+id/label_phone" />
+
+                <TextView
+                    android:id="@+id/label_uc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/standard_margin"
+                    android:fontFamily="@font/poppins"
+                    android:text="Union Council:"
+                    app:layout_constraintStart_toStartOf="@+id/label_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/label_phone" />
+
+                <TextView
+                    android:id="@+id/uc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/standard_margin"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@{obj.ucName, default = UC}"
+                    app:layout_constraintEnd_toEndOf="@+id/phone"
+                    app:layout_constraintStart_toEndOf="@+id/label_uc"
+                    app:layout_constraintTop_toTopOf="@+id/label_uc" />
+
+                <TextView
+                    android:id="@+id/label_moh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/standard_margin"
+                    android:fontFamily="@font/poppins"
+                    android:text="Mohallah:"
+                    app:layout_constraintStart_toStartOf="@+id/label_uc"
+                    app:layout_constraintTop_toBottomOf="@+id/label_uc" />
+
+                <TextView
+                    android:id="@+id/moh"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/standard_margin"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@{obj.mohName, default = mohallah}"
+                    app:layout_constraintEnd_toEndOf="@+id/uc"
+                    app:layout_constraintStart_toEndOf="@+id/label_moh"
+                    app:layout_constraintTop_toTopOf="@+id/label_moh" />
+
+                <View
+                    android:id="@+id/line"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/standard_margin"
+                    android:background="@color/color_grey"
+                    app:layout_constraintEnd_toEndOf="@id/moh"
+                    app:layout_constraintStart_toStartOf="@id/image"
+                    app:layout_constraintTop_toBottomOf="@id/label_moh" />
+
+                <TextView
+                    android:id="@+id/label_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/vertical_margin"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/label_description"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@id/line"
+                    app:layout_constraintTop_toBottomOf="@id/line" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/standard_margin"
+                    android:text="@{obj.message, default = message}"
+                    app:layout_constraintEnd_toEndOf="@+id/line"
+                    app:layout_constraintStart_toStartOf="@+id/label_description"
+                    app:layout_constraintTop_toBottomOf="@+id/label_description" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

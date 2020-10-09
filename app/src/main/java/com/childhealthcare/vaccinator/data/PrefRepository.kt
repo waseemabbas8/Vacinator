@@ -18,7 +18,6 @@ class PrefRepository(private val app: Application){
         GridMenu(app.getString(R.string.Personal),R.drawable.ic_user),
         GridMenu(app.getString(R.string.vaccination),R.drawable.ic_vaccine),
         GridMenu(app.getString(R.string.polio),R.drawable.ic_polio),
-        GridMenu(app.getString(R.string.child),R.drawable.ic_child),
         GridMenu(app.getString(R.string.job),R.drawable.ic_calendar),
         GridMenu(app.getString(R.string.noti),R.drawable.ic_notifications)
     )

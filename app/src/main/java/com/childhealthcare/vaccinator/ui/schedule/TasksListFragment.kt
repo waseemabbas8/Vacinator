@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.childhealthcare.vaccinator.data.RESPONSE_CODE_ERROR
 import com.childhealthcare.vaccinator.databinding.FragmentTasksListBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,6 +22,11 @@ class TasksListFragment : Fragment() {
     ): View? {
         binding = FragmentTasksListBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
+
+        binding.addNewTask.setOnClickListener {
+            val action = TasksListFragmentDirections.actionDestTasksListToDestAddTask()
+            binding.root.findNavController().navigate(action)
+        }
 
         return binding.root
     }

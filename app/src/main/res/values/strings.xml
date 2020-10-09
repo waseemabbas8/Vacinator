@@ -35,13 +35,15 @@
     <string name="hint_search">Search…</string>
     <string name="label_last_vaccination">Last Vaccination: </string>
     <string name="label_last_polio_date">Last Polio: </string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="label_polio_status">Polio Status</string>
     <string name="label_upcoming">Upcoming</string>
     <string name="label_vaccinations">Vaccinations</string>
     <string name="label_add_vaccine">Add Vaccine</string>
-    <string name="hint_task_description">Enter your task description...</string>
+    <string name="hint_task_description">Enter your task description…</string>
     <string name="label_description">Description:</string>
+    <string name="title_new_task">Add New Task</string>
+    <string name="title_queries">Queries</string>
+    <string name="title_query">Query Details</string>
 
 </resources>

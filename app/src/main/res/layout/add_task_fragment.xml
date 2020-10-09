@@ -4,6 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.schedule.AddTaskFragment">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.childhealthcare.vaccinator.ui.schedule.AddTaskViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -11,56 +17,79 @@
         <include
             android:id="@+id/toolbar_layout"
             layout="@layout/partial_toolbar"
-            app:title="@{`Add New Task`}"
+            app:titleStr="@{@string/title_new_task}"
             app:layout_constraintTop_toTopOf="parent"/>
-
-        <TextView
-            android:id="@+id/label_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/label_description"
-            android:fontFamily="@font/poppins_semibold"
-            android:textColor="@color/black"
-            android:layout_marginTop="@dimen/vertical_margin"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_layout"
-            android:layout_marginStart="@dimen/horizontal_margin"
-            android:layout_marginEnd="@dimen/horizontal_margin"/>
-
-        <EditText
-            android:id="@+id/description"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:gravity="top"
-            android:padding="@dimen/horizontal_margin"
-            android:hint="@string/hint_task_description"
-            android:background="@drawable/edittext_background"
-            android:layout_marginTop="@dimen/vertical_margin"
-            app:layout_constraintTop_toBottomOf="@id/label_description"
-            android:layout_marginStart="@dimen/horizontal_margin"
-            android:layout_marginEnd="@dimen/horizontal_margin"/>
-
-        <DatePicker
-            android:id="@+id/calendar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:datePickerMode="spinner"
-            android:calendarViewShown="false"
-            app:layout_constraintTop_toBottomOf="@id/description"/>
-
-        <TimePicker
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:timePickerMode="spinner"
-            app:layout_constraintTop_toBottomOf="@id/calendar"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_done"
+            android:onClick="@{() -> viewModel.addTask()}"
             app:layout_constraintTop_toTopOf="@id/toolbar_layout"
             app:layout_constraintBottom_toBottomOf="@id/toolbar_layout"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginHorizontal="@dimen/horizontal_margin"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_layout"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/label_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_description"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="@dimen/vertical_margin"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="@dimen/horizontal_margin"
+                    android:layout_marginEnd="@dimen/horizontal_margin"/>
+
+                <EditText
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_area_height"
+                    android:gravity="top"
+                    android:padding="@dimen/horizontal_margin"
+                    android:hint="@string/hint_task_description"
+                    android:text="@={viewModel.description}"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="13sp"
+                    android:background="@drawable/edittext_background"
+                    android:layout_marginTop="@dimen/vertical_margin"
+                    app:layout_constraintTop_toBottomOf="@id/label_description"
+                    android:layout_marginStart="@dimen/horizontal_margin"
+                    android:layout_marginEnd="@dimen/horizontal_margin"/>
+
+                <DatePicker
+                    android:id="@+id/calendar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:datePickerMode="spinner"
+                    android:calendarViewShown="false"
+                    android:year="@={viewModel.year}"
+                    android:month="@={viewModel.month}"
+                    android:day="@={viewModel.day}"
+                    app:layout_constraintTop_toBottomOf="@id/description"/>
+
+                <TimePicker
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:timePickerMode="spinner"
+                    android:hour="@={viewModel.hours}"
+                    android:minute="@={viewModel.minutes}"
+                    app:layout_constraintTop_toBottomOf="@id/calendar"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

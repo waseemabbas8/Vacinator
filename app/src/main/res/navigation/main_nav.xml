@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_dest_vaccinator_dashboard_to_dest_tasks_list"
             app:destination="@id/dest_tasks_list" />
+        <action
+            android:id="@+id/action_dest_vaccinator_dashboard_to_dest_queries_list"
+            app:destination="@id/dest_queries_list" />
     </fragment>
     <fragment
         android:id="@+id/dest_profile"
@@ -52,5 +55,32 @@
         android:id="@+id/dest_tasks_list"
         android:name="com.childhealthcare.vaccinator.ui.schedule.TasksListFragment"
         android:label="fragment_tasks_list"
-        tools:layout="@layout/fragment_tasks_list" />
+        tools:layout="@layout/fragment_tasks_list" >
+        <action
+            android:id="@+id/action_dest_tasks_list_to_dest_add_task"
+            app:destination="@id/dest_add_task" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_add_task"
+        android:name="com.childhealthcare.vaccinator.ui.schedule.AddTaskFragment"
+        android:label="add_task_fragment"
+        tools:layout="@layout/add_task_fragment" />
+    <fragment
+        android:id="@+id/dest_queries_list"
+        android:name="com.childhealthcare.vaccinator.ui.query.QueriesListFragment"
+        android:label="queries_list_fragment"
+        tools:layout="@layout/queries_list_fragment" >
+        <action
+            android:id="@+id/action_dest_queries_list_to_dest_query_fetail"
+            app:destination="@id/dest_query_fetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_query_fetail"
+        android:name="com.childhealthcare.vaccinator.ui.query.QueryDetailFragment"
+        android:label="fragment_query_detail"
+        tools:layout="@layout/fragment_query_detail" >
+        <argument
+            android:name="query"
+            app:argType="com.childhealthcare.vaccinator.model.QueryModel" />
+    </fragment>
 </navigation>

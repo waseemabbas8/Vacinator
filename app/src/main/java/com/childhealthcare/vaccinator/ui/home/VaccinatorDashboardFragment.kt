@@ -21,7 +21,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 private const val PROFILE_INDEX = 0
 private const val VACCINATION_INDEX = 1
 private const val POLIO_INDEX = 2
-private const val SCHEDULE_INDEX = 4
+private const val SCHEDULE_INDEX = 3
+private const val NTF_INDEX = 4
 
 
 class VaccinatorDashboardFragment : Fragment() {
@@ -91,6 +92,11 @@ class VaccinatorDashboardFragment : Fragment() {
                 SCHEDULE_INDEX -> {
                     val action =
                         VaccinatorDashboardFragmentDirections.actionDestVaccinatorDashboardToDestTasksList()
+                    binding.root.findNavController().navigate(action)
+                }
+                NTF_INDEX -> {
+                    val action =
+                        VaccinatorDashboardFragmentDirections.actionDestVaccinatorDashboardToDestQueriesList()
                     binding.root.findNavController().navigate(action)
                 }
             }

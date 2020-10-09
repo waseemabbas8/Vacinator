@@ -14,5 +14,6 @@
     <dimen name="height_250">250dp</dimen>
     <dimen name="height_130">130dp</dimen>
     <dimen name="height_120">120dp</dimen>
+    <dimen name="text_area_height">200dp</dimen>
 
 </resources>

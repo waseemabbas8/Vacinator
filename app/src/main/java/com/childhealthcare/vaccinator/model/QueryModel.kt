@@ -2,6 +2,7 @@ package com.childhealthcare.vaccinator.model
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class QueryModel(
     @SerializedName("CNIC")
@@ -20,4 +21,4 @@ data class QueryModel(
     val parentId: Int,
     @SerializedName("UC")
     val ucName: String
-)
+): Serializable
