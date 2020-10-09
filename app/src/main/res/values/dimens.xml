@@ -4,4 +4,15 @@
     <dimen name="toolbar_text_size">16sp</dimen>
     <dimen name="vertical_margin">12dp</dimen>
     <dimen name="standard_margin">8dp</dimen>
+    <dimen name="action_btn_size">40dp</dimen>
+
+    <dimen name="padding_15">15dp</dimen>
+    <dimen name="padding_10">10dp</dimen>
+    <dimen name="padding_5">5dp</dimen>
+    <dimen name="height_50">50dp</dimen>
+    <dimen name="height_30">30dp</dimen>
+    <dimen name="height_250">250dp</dimen>
+    <dimen name="height_130">130dp</dimen>
+    <dimen name="height_120">120dp</dimen>
+
 </resources>

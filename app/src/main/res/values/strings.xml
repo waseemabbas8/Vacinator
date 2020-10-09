@@ -41,5 +41,7 @@
     <string name="label_upcoming">Upcoming</string>
     <string name="label_vaccinations">Vaccinations</string>
     <string name="label_add_vaccine">Add Vaccine</string>
+    <string name="hint_task_description">Enter your task description...</string>
+    <string name="label_description">Description:</string>
 
 </resources>
