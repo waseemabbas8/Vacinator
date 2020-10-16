@@ -5,9 +5,11 @@
     tools:context=".ui.home.VaccinatorDashboardFragment">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.childhealthcare.vaccinator.ui.home.VacinatorDashboardViewModel" />
+
         <variable
             name="onItemClick"
             type="com.childhealthcare.vaccinator.ui.home.VaccinatorDashboardFragment.OnDashboardItemClick" />
@@ -15,8 +17,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+        android:layout_height="match_parent">
 
         <View
             android:id="@+id/bg_top_header"
@@ -30,11 +31,11 @@
             android:id="@+id/logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_exit"
-            android:layout_marginEnd="@dimen/horizontal_margin"
             android:layout_marginTop="@dimen/vertical_margin"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:layout_marginEnd="@dimen/horizontal_margin"
+            android:src="@drawable/ic_exit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/user_photo"
@@ -54,12 +55,12 @@
             android:layout_marginStart="18dp"
             android:layout_marginLeft="18dp"
             android:layout_marginTop="75dp"
-            android:textAllCaps="true"
+            android:fontFamily="@font/poppins_semibold"
             android:text="@{viewModel.user.name, default = Ali}"
+            android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:fontFamily="@font/poppins_semibold"
             app:layout_constraintStart_toEndOf="@id/user_photo"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,29 +71,30 @@
             android:layout_marginStart="18dp"
             android:layout_marginLeft="18dp"
             android:layout_marginTop="32dp"
+            android:fontFamily="@font/poppins"
             android:text="@{viewModel.user.mobile, default=0302188898}"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:fontFamily="@font/poppins"
             app:layout_constraintStart_toEndOf="@id/user_photo"
             app:layout_constraintTop_toTopOf="@id/user_name" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="20dp"
-            android:nestedScrollingEnabled="false"
-            android:padding="10dp"
+            android:layout_marginBottom="@dimen/vertical_margin"
+            android:clipToPadding="false"
+            android:paddingStart="@dimen/standard_margin"
+            android:paddingTop="@dimen/vertical_margin"
+            android:paddingEnd="@dimen/standard_margin"
+            app:hasFixSize="@{true}"
+            app:itemClickListener="@{onItemClick}"
+            app:itemLayout="@{@layout/item_dashboard_list}"
+            app:itemsList="@{viewModel.dashboardItems}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:hasFixSize="@{true}"
-            app:itemsList="@{viewModel.dashboardItems}"
-            app:itemLayout="@{@layout/item_dashboard_list}"
-            app:itemClickListener="@{onItemClick}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/bg_top_header"
-            app:layout_constraintVertical_bias="0.0"
             app:spanCount="2"
             tools:itemCount="6"
             tools:listitem="@layout/item_dashboard_list" />
