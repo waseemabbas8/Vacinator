@@ -32,7 +32,9 @@ data class Child(
     @SerializedName("UCID")
     val ucId: Int,
     @SerializedName("vaccinations")
-    val vaccinations: List<Vaccination>
+    val vaccinations: List<Vaccination>,
+    @SerializedName("polios")
+    val polioList: List<Polio>
 ) {
     override fun toString(): String = "$name, $fatherName, $dob, $mohName"
 
@@ -41,5 +43,9 @@ data class Child(
     } catch (e: Exception) {
         ""
     }
+
+    fun getPolioCountStr() = "(${polioList.count()}/20)"
+
+    fun getPolioProgress() = polioList.count()/20 * 100
 
 }

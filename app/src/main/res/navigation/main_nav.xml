@@ -50,6 +50,10 @@
         <argument
             android:name="childId"
             app:argType="integer" />
+        <argument
+            android:name="pageIndex"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/dest_tasks_list"

@@ -83,4 +83,26 @@ class ChildViewModel(
         }
     }
 
+    @WorkerThread
+    fun addPolio() {
+        viewModelScope.launch(Dispatchers.IO) {
+            _progressbarVisibility.postValue(View.VISIBLE)
+            try {
+                val response = apiRepository.addPolio(childId, user.Id)
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        getChildDetails()
+                        _generalResponse.postValue(it)
+                    }
+                }
+            } catch (e: Exception) {
+                val msg = if (e is IOException) MSG_INTERNET_FAILURE else e.message.toString()
+                _generalResponse.postValue(GeneralResponse(RESPONSE_CODE_ERROR, msg))
+            } catch (t: Throwable) {
+                _generalResponse.postValue(GeneralResponse(RESPONSE_CODE_ERROR, t.message ?: "ERROR"))
+            }
+            _progressbarVisibility.postValue(View.GONE)
+        }
+    }
+
 }

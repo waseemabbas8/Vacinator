@@ -1,13 +1,12 @@
 package com.childhealthcare.vaccinator.ui.common
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.childhealthcare.vaccinator.R
 import com.childhealthcare.vaccinator.databinding.FragmentChildrenListBinding
 import com.childhealthcare.vaccinator.model.Child
 import com.childhealthcare.vaccinator.ui.GenericRecyclerViewAdapter
@@ -65,7 +64,8 @@ class ChildrenListFragment : Fragment() {
 
     inner class OnChildClick : OnListItemClickListener<Child> {
         override fun onItemClick(item: Child, pos: Int) {
-            val action = ChildrenListFragmentDirections.actionDestChildrenToDestChild(item.id)
+            val pageIndex = if (isVaccine) VACCINATION_PAGE else POLIO_PAGE
+            val action = ChildrenListFragmentDirections.actionDestChildrenToDestChild(item.id, pageIndex)
             binding.root.findNavController().navigate(action)
         }
 

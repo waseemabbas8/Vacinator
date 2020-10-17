@@ -36,6 +36,12 @@ interface Api {
         @Query("vid") vaccinatorId: Int
     ): Response<GeneralResponse>
 
+    @POST("UpdatePolioStatus")
+    suspend fun addPolio(
+        @Query("chilid") childId: Int,
+        @Query("vid") vaccinatorId: Int
+    ): Response<GeneralResponse>
+
     @GET("GetVaccinatorTaskList")
     suspend fun getTasksList(
         @Query("vid") vaccinatorId: Int

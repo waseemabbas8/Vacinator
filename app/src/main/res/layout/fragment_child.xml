@@ -21,418 +21,183 @@
             app:layout_constraintTop_toTopOf="parent"
             app:titleStr="@{viewModel.child.name}" />
 
-        <androidx.core.widget.NestedScrollView
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_layout"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:fillViewport="true">
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_layout">
 
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:background="@color/colorPrimaryDark"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="@id/empty_view" />
-
-                <ImageView
-                    android:id="@+id/image"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_marginStart="@dimen/horizontal_margin"
-                    android:background="@drawable/bg_circle_outlined_green"
-                    android:padding="3dp"
-                    android:src="@drawable/child"
-                    android:layout_marginTop="@dimen/standard_margin"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/label_father_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/standard_margin"
-                    android:text="Father Name:"
-                    android:fontFamily="@font/poppins"
-                    android:layout_marginStart="@dimen/standard_margin"
-                    app:layout_constraintStart_toEndOf="@+id/image"
-                    app:layout_constraintTop_toTopOf="@+id/image" />
-
-                <TextView
-                    android:id="@+id/label_dob"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/standard_margin"
-                    android:text="Date of Birth:"
-                    android:fontFamily="@font/poppins"
-                    app:layout_constraintStart_toStartOf="@+id/label_father_name"
-                    app:layout_constraintTop_toBottomOf="@+id/label_father_name" />
-
-                <TextView
-                    android:id="@+id/father_name"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/standard_margin"
-                    android:text="@{viewModel.child.fatherName, default = Rehan}"
-                    android:fontFamily="@font/poppins_semibold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="@dimen/horizontal_margin"
-                    app:layout_constraintStart_toEndOf="@+id/label_father_name"
-                    app:layout_constraintTop_toTopOf="@+id/label_father_name" />
-
-                <TextView
-                    android:id="@+id/dob"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/standard_margin"
-                    android:text="@{viewModel.child.dob, default = dob}"
-                    android:fontFamily="@font/poppins_semibold"
-                    app:layout_constraintEnd_toEndOf="@+id/father_name"
-                    app:layout_constraintStart_toEndOf="@+id/label_dob"
-                    app:layout_constraintTop_toTopOf="@+id/label_dob" />
-
-                <TextView
-                    android:id="@+id/label_gender"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/standard_margin"
-                    android:text="Gender:"
-                    android:fontFamily="@font/poppins"
-                    app:layout_constraintStart_toStartOf="@+id/label_dob"
-                    app:layout_constraintTop_toBottomOf="@+id/label_dob" />
-
-                <TextView
-                    android:id="@+id/gender"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/standard_margin"
-                    android:text="@{viewModel.child.gender, default = Male}"
-                    android:fontFamily="@font/poppins_semibold"
-                    app:layout_constraintStart_toEndOf="@+id/label_gender"
-                    app:layout_constraintTop_toTopOf="@+id/label_gender"
-                    app:layout_constraintEnd_toEndOf="@id/dob"/>
-
-                <TextView
-                    android:id="@+id/label_uc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/standard_margin"
-                    android:text="Union Council:"
-                    android:fontFamily="@font/poppins"
-                    app:layout_constraintStart_toStartOf="@+id/label_gender"
-                    app:layout_constraintTop_toBottomOf="@+id/label_gender" />
-
-                <TextView
-                    android:id="@+id/uc"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/standard_margin"
-                    android:text="@{viewModel.child.council, default = UC}"
-                    android:fontFamily="@font/poppins_semibold"
-                    app:layout_constraintStart_toEndOf="@+id/label_uc"
-                    app:layout_constraintTop_toTopOf="@+id/label_uc"
-                    app:layout_constraintEnd_toEndOf="@id/gender"/>
-
-                <TextView
-                    android:id="@+id/label_moh"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/standard_margin"
-                    android:text="Mohallah:"
-                    android:fontFamily="@font/poppins"
-                    app:layout_constraintStart_toStartOf="@+id/label_uc"
-                    app:layout_constraintTop_toBottomOf="@+id/label_uc" />
-
-                <TextView
-                    android:id="@+id/moh"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/standard_margin"
-                    android:text="@{viewModel.child.mohName, default = moh}"
-                    android:fontFamily="@font/poppins_semibold"
-                    app:layout_constraintStart_toEndOf="@+id/label_moh"
-                    app:layout_constraintTop_toTopOf="@+id/label_moh"
-                    app:layout_constraintEnd_toEndOf="@id/uc" />
-
-                <View
-                    android:id="@+id/empty_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="100dp"
-                    android:background="@color/colorPrimaryLight"
-                    app:layout_constraintTop_toBottomOf="@id/label_moh" />
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card"
+                <com.google.android.material.appbar.CollapsingToolbarLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/horizontal_margin"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="@dimen/horizontal_margin"
-                    app:layout_constraintTop_toBottomOf="@id/label_moh">
+                    android:fitsSystemWindows="true"
+                    app:layout_scrollFlags="scroll|enterAlways">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        app:layout_collapseMode="parallax"
+                        app:layout_collapseParallaxMultiplier="0.7">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:background="@color/colorPrimaryDark"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="@id/empty_view" />
 
                         <ImageView
-                            android:id="@+id/check"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/image"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
                             android:layout_marginStart="@dimen/horizontal_margin"
-                            android:layout_marginTop="18dp"
-                            android:src="@{viewModel.child.polioStatus ? @drawable/ic_check_circle : @drawable/ic_uncheck_circle}"
+                            android:background="@drawable/bg_circle_outlined_green"
+                            android:padding="3dp"
+                            android:src="@drawable/child"
+                            android:layout_marginTop="@dimen/standard_margin"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-<!--                        <ImageView-->
-<!--                            android:id="@+id/check"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginStart="@dimen/horizontal_margin"-->
-<!--                            android:layout_marginTop="18dp"-->
-<!--                            android:src="@drawable/ic_uncheck_circle"-->
-<!--                            app:layout_constraintStart_toStartOf="parent"-->
-<!--                            app:layout_constraintTop_toTopOf="parent" />-->
 
                         <TextView
-                            android:id="@+id/label_polio_status"
+                            android:id="@+id/label_father_name"
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/standard_margin"
+                            android:text="Father Name:"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginStart="@dimen/standard_margin"
+                            app:layout_constraintStart_toEndOf="@+id/image"
+                            app:layout_constraintTop_toTopOf="@+id/image" />
+
+                        <TextView
+                            android:id="@+id/label_dob"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/standard_margin"
+                            android:text="Date of Birth:"
+                            android:fontFamily="@font/poppins"
+                            app:layout_constraintStart_toStartOf="@+id/label_father_name"
+                            app:layout_constraintTop_toBottomOf="@+id/label_father_name" />
+
+                        <TextView
+                            android:id="@+id/father_name"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/standard_margin"
-                            android:text="@string/label_polio_status"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/poppins"
-                            app:layout_constraintStart_toEndOf="@id/check"
-                            app:layout_constraintTop_toTopOf="@id/check" />
+                            android:text="@{viewModel.child.fatherName, default = Rehan}"
+                            android:fontFamily="@font/poppins_semibold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="@dimen/horizontal_margin"
+                            app:layout_constraintStart_toEndOf="@+id/label_father_name"
+                            app:layout_constraintTop_toTopOf="@+id/label_father_name" />
 
                         <TextView
-                            android:id="@+id/date"
+                            android:id="@+id/dob"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/standard_margin"
+                            android:text="@{viewModel.child.dob, default = dob}"
+                            android:fontFamily="@font/poppins_semibold"
+                            app:layout_constraintEnd_toEndOf="@+id/father_name"
+                            app:layout_constraintStart_toEndOf="@+id/label_dob"
+                            app:layout_constraintTop_toTopOf="@+id/label_dob" />
+
+                        <TextView
+                            android:id="@+id/label_gender"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/horizontal_margin"
-                            android:text="@{`Date: ` + viewModel.child.lastDate, default = date}"
-                            android:textSize="13sp"
+                            android:layout_marginTop="@dimen/standard_margin"
+                            android:text="Gender:"
                             android:fontFamily="@font/poppins"
-                            app:layout_constraintStart_toStartOf="@id/label_polio_status"
-                            app:layout_constraintTop_toBottomOf="@+id/label_polio_status" />
+                            app:layout_constraintStart_toStartOf="@+id/label_dob"
+                            app:layout_constraintTop_toBottomOf="@+id/label_dob" />
 
-                        <Button
-                            android:id="@+id/btn_polio"
-                            style="@style/Widget.AppCompat.Button.Small"
+                        <TextView
+                            android:id="@+id/gender"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/standard_margin"
+                            android:text="@{viewModel.child.gender, default = Male}"
+                            android:fontFamily="@font/poppins_semibold"
+                            app:layout_constraintStart_toEndOf="@+id/label_gender"
+                            app:layout_constraintTop_toTopOf="@+id/label_gender"
+                            app:layout_constraintEnd_toEndOf="@id/dob"/>
+
+                        <TextView
+                            android:id="@+id/label_uc"
                             android:layout_width="wrap_content"
-                            android:layout_height="30dp"
-                            android:layout_marginEnd="@dimen/horizontal_margin"
-                            android:background="@color/colorPrimaryDark"
-                            android:paddingStart="@dimen/standard_margin"
-                            android:paddingEnd="@dimen/standard_margin"
-                            android:text="Add Polio"
-                            android:textAllCaps="false"
-                            android:textColor="@color/white"
-                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/standard_margin"
+                            android:text="Union Council:"
                             android:fontFamily="@font/poppins"
-                            android:visibility="@{viewModel.child.polioStatus ? View.GONE : View.VISIBLE}"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/label_polio_status" />
+                            app:layout_constraintStart_toStartOf="@+id/label_gender"
+                            app:layout_constraintTop_toBottomOf="@+id/label_gender" />
+
+                        <TextView
+                            android:id="@+id/uc"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/standard_margin"
+                            android:text="@{viewModel.child.council, default = UC}"
+                            android:fontFamily="@font/poppins_semibold"
+                            app:layout_constraintStart_toEndOf="@+id/label_uc"
+                            app:layout_constraintTop_toTopOf="@+id/label_uc"
+                            app:layout_constraintEnd_toEndOf="@id/gender"/>
+
+                        <TextView
+                            android:id="@+id/label_moh"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/standard_margin"
+                            android:text="Mohallah:"
+                            android:fontFamily="@font/poppins"
+                            app:layout_constraintStart_toStartOf="@+id/label_uc"
+                            app:layout_constraintTop_toBottomOf="@+id/label_uc" />
+
+                        <TextView
+                            android:id="@+id/moh"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/standard_margin"
+                            android:text="@{viewModel.child.mohName, default = moh}"
+                            android:fontFamily="@font/poppins_semibold"
+                            app:layout_constraintStart_toEndOf="@+id/label_moh"
+                            app:layout_constraintTop_toTopOf="@+id/label_moh"
+                            app:layout_constraintEnd_toEndOf="@id/uc" />
 
                         <View
-                            android:id="@+id/line"
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_marginTop="@dimen/standard_margin"
-                            android:background="@color/color_grey"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/date"
-                            android:layout_marginStart="@dimen/horizontal_margin"
-                            android:layout_marginEnd="@dimen/horizontal_margin"/>
-
-                        <TextView
-                            android:id="@+id/label_vaccinations_done"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/vertical_margin"
-                            android:text="@string/label_vaccinations"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/poppins"
-                            app:layout_constraintStart_toStartOf="@id/line"
-                            app:layout_constraintTop_toBottomOf="@id/line" />
-
-                        <ImageView
-                            android:id="@+id/vac_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/standard_margin"
-                            android:background="@drawable/ic_check_circle"
-                            android:src="@{viewModel.child.vaccinations.size() > 0 ? @drawable/ic_check_circle : @drawable/ic_uncheck_circle}"
-                            app:layout_constraintStart_toStartOf="@id/label_vaccinations_done"
-                            app:layout_constraintTop_toBottomOf="@id/label_vaccinations_done" />
-
-                        <ImageView
-                            android:id="@+id/vac_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/standard_margin"
-                            android:background="@drawable/ic_uncheck_circle"
-                            android:src="@{viewModel.child.vaccinations.size() > 1 ? @drawable/ic_check_circle : @drawable/ic_uncheck_circle}"
-                            android:layout_marginStart="@dimen/standard_margin"
-                            app:layout_constraintStart_toEndOf="@id/vac_1"
-                            app:layout_constraintTop_toBottomOf="@id/label_vaccinations_done" />
-
-                        <ImageView
-                            android:id="@+id/vac_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/standard_margin"
-                            android:background="@drawable/ic_uncheck_circle"
-                            android:src="@{viewModel.child.vaccinations.size() > 2 ? @drawable/ic_check_circle : @drawable/ic_uncheck_circle}"
-                            android:layout_marginStart="@dimen/standard_margin"
-                            app:layout_constraintStart_toEndOf="@id/vac_2"
-                            app:layout_constraintTop_toBottomOf="@id/label_vaccinations_done" />
-
-                        <ImageView
-                            android:id="@+id/vac_4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/standard_margin"
-                            android:background="@drawable/ic_uncheck_circle"
-                            android:src="@{viewModel.child.vaccinations.size() > 3 ? @drawable/ic_check_circle : @drawable/ic_uncheck_circle}"
-                            android:layout_marginStart="@dimen/standard_margin"
-                            app:layout_constraintStart_toEndOf="@id/vac_3"
-                            app:layout_constraintTop_toBottomOf="@id/label_vaccinations_done" />
-
-                        <ImageView
-                            android:id="@+id/vac_5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/standard_margin"
-                            android:background="@drawable/ic_uncheck_circle"
-                            android:src="@{viewModel.child.vaccinations.size() > 4 ? @drawable/ic_check_circle : @drawable/ic_uncheck_circle}"
-                            android:layout_marginStart="@dimen/standard_margin"
-                            app:layout_constraintStart_toEndOf="@id/vac_4"
-                            app:layout_constraintTop_toBottomOf="@id/label_vaccinations_done" />
-
-                        <ImageView
-                            android:id="@+id/vac_6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/standard_margin"
-                            android:background="@drawable/ic_uncheck_circle"
-                            android:src="@{viewModel.child.vaccinations.size() > 5 ? @drawable/ic_check_circle : @drawable/ic_uncheck_circle}"
-                            android:layout_marginStart="@dimen/standard_margin"
-                            app:layout_constraintStart_toEndOf="@id/vac_5"
-                            app:layout_constraintTop_toBottomOf="@id/label_vaccinations_done" />
-
-                        <RelativeLayout
-                            android:id="@+id/upcoming_container"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="@id/line"
-                            app:layout_constraintTop_toBottomOf="@id/vac_1"
-                            android:layout_marginEnd="@dimen/standard_margin"
-                            android:visibility="@{viewModel.child.vaccinations.size() > 5 ? View.GONE : View.VISIBLE}">
-
-                            <ImageView
-                                android:id="@+id/ic_update"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_update" />
-
-                            <TextView
-                                android:id="@+id/label_upcoming"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/standard_margin"
-                                android:layout_toEndOf="@id/ic_update"
-                                android:text="@string/label_upcoming"
-                                android:textColor="@color/black"
-                                android:fontFamily="@font/poppins"/>
-
-                            <TextView
-                                android:id="@+id/upcoming_date"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/label_upcoming"
-                                android:layout_marginStart="@dimen/standard_margin"
-                                android:layout_toEndOf="@id/ic_update"
-                                android:text="@{`Date: ` + viewModel.child.upcomingDate, default = date}"
-                                android:textSize="13sp"
-                                android:fontFamily="@font/poppins"/>
-
-                            <Button
-                                android:id="@+id/btn_vaccine"
-                                style="@style/Widget.AppCompat.Button.Small"
-                                android:layout_width="wrap_content"
-                                android:layout_height="30dp"
-                                android:layout_marginEnd="@dimen/standard_margin"
-                                android:background="@color/colorPrimaryDark"
-                                android:paddingStart="@dimen/standard_margin"
-                                android:paddingEnd="@dimen/standard_margin"
-                                android:text="@string/label_add_vaccine"
-                                android:textAllCaps="false"
-                                android:textColor="@color/white"
-                                android:textSize="12sp"
-                                android:fontFamily="@font/poppins"
-                                android:onClick="@{() -> viewModel.addVaccination()}"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"/>
-
-                        </RelativeLayout>
-
-                        <View
-                            android:id="@+id/line2"
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_marginTop="@dimen/standard_margin"
-                            android:background="@color/color_grey"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/upcoming_container"
-                            android:layout_marginStart="@dimen/horizontal_margin"
-                            android:layout_marginEnd="@dimen/horizontal_margin"/>
-
-                        <TextView
-                            android:id="@+id/label_history"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/vertical_margin"
-                            android:text="@string/history"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/poppins"
-                            app:layout_constraintStart_toStartOf="@id/line2"
-                            app:layout_constraintTop_toBottomOf="@id/line2" />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rv_vaccinations"
+                            android:id="@+id/empty_view"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintTop_toBottomOf="@id/label_history"
-                            android:layout_marginTop="@dimen/standard_margin"
-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                            tools:listitem="@layout/item_vaccinations_list"
-                            app:itemLayout="@{@layout/item_vaccinations_list}"
-                            app:itemsList="@{viewModel.child.vaccinations}"
-                            app:hasFixSize="@{true}"/>
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/height_30"
+                            android:background="@color/colorPrimaryLight"
+                            app:layout_constraintTop_toBottomOf="@id/label_moh" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-                <View
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabs"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    app:layout_constraintTop_toBottomOf="@id/card"
-                    android:layout_marginTop="@dimen/vertical_margin" />
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/white"
+                    app:tabSelectedTextColor="@color/colorPrimaryDark"
+                    app:tabIndicatorColor="@color/colorPrimaryDark"
+                    app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"/>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.appbar.AppBarLayout>
 
-        </androidx.core.widget.NestedScrollView>
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
         <ProgressBar
             android:layout_width="wrap_content"
