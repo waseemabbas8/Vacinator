@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_dest_vaccinator_dashboard_to_dest_queries_list"
             app:destination="@id/dest_queries_list" />
+        <action
+            android:id="@+id/action_dest_vaccinator_dashboard_to_dest_message"
+            app:destination="@id/dest_message" />
     </fragment>
     <fragment
         android:id="@+id/dest_profile"
@@ -87,4 +90,9 @@
             android:name="query"
             app:argType="com.childhealthcare.vaccinator.model.QueryModel" />
     </fragment>
+    <fragment
+        android:id="@+id/dest_message"
+        android:name="com.childhealthcare.vaccinator.ui.message.MessageFragment"
+        android:label="fragment_message"
+        tools:layout="@layout/fragment_message" />
 </navigation>

@@ -23,6 +23,7 @@ private const val VACCINATION_INDEX = 1
 private const val POLIO_INDEX = 2
 private const val SCHEDULE_INDEX = 3
 private const val NTF_INDEX = 4
+private const val MSG_INDEX = 5
 
 
 class VaccinatorDashboardFragment : Fragment() {
@@ -97,6 +98,11 @@ class VaccinatorDashboardFragment : Fragment() {
                 NTF_INDEX -> {
                     val action =
                         VaccinatorDashboardFragmentDirections.actionDestVaccinatorDashboardToDestQueriesList()
+                    binding.root.findNavController().navigate(action)
+                }
+                MSG_INDEX -> {
+                    val action =
+                        VaccinatorDashboardFragmentDirections.actionDestVaccinatorDashboardToDestMessage()
                     binding.root.findNavController().navigate(action)
                 }
             }

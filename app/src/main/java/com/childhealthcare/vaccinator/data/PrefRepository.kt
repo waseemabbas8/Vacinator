@@ -19,7 +19,8 @@ class PrefRepository(private val app: Application){
         GridMenu(app.getString(R.string.vaccination),R.drawable.ic_vaccine),
         GridMenu(app.getString(R.string.polio),R.drawable.ic_polio),
         GridMenu(app.getString(R.string.job),R.drawable.ic_calendar),
-        GridMenu(app.getString(R.string.noti),R.drawable.ic_notifications)
+        GridMenu(app.getString(R.string.noti),R.drawable.ic_notifications),
+        GridMenu(app.getString(R.string.option_message),R.drawable.ic_email)
     )
 
     fun saveUser(user: User) {

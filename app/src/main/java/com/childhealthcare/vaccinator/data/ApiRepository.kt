@@ -23,4 +23,6 @@ class ApiRepository(private val api: Api) {
     suspend fun addVaccinatorTask(task: TodoTask) = api.addVaccinatorTask(task)
 
     suspend fun getQueriesByCouncilId(ucId: Int) = api.getQueriesByCouncilId(ucId)
+
+    suspend fun getParentsByMoh(mohId: Int) = api.getParentsByMoh(mohId)
 }

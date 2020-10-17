@@ -9,6 +9,7 @@ import com.childhealthcare.vaccinator.ui.account.ProfileViewModel
 import com.childhealthcare.vaccinator.ui.common.ChildViewModel
 import com.childhealthcare.vaccinator.ui.common.ChildrenListViewModel
 import com.childhealthcare.vaccinator.ui.home.VacinatorDashboardViewModel
+import com.childhealthcare.vaccinator.ui.message.MessageViewModel
 import com.childhealthcare.vaccinator.ui.query.QueriesListViewModel
 import com.childhealthcare.vaccinator.ui.schedule.AddTaskViewModel
 import com.childhealthcare.vaccinator.ui.schedule.TasksListViewModel
@@ -36,7 +37,7 @@ val viewModelModule = module {
     viewModel { TasksListViewModel(get(), get<PrefRepository>().getUser()?.Id ?: 0) }
     viewModel { AddTaskViewModel(get(), get<PrefRepository>().getUser()?.Id ?: 0) }
     viewModel { QueriesListViewModel(get(), get<PrefRepository>().getUser()?.UC ?: 0) }
-
+    viewModel { MessageViewModel(get(), get<PrefRepository>().getUser()?.UC ?: 0) }
 }
 
 val repositoryModule = module {

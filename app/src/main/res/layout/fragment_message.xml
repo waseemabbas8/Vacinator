@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.message.MessageFragment">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.childhealthcare.vaccinator.ui.message.MessageViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar_layout"
+            layout="@layout/partial_toolbar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleStr="@{`Send Messages`}"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/horizontal_margin"
+            android:src="@drawable/ic_send"
+            android:padding="2dp"
+            android:onClick="@{(view) -> viewModel.sendMessage(view)}"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar_layout"
+            app:layout_constraintEnd_toEndOf="@id/toolbar_layout"
+            app:layout_constraintTop_toTopOf="@id/toolbar_layout" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_layout">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_area_height"
+                    android:layout_marginStart="@dimen/horizontal_margin"
+                    android:layout_marginTop="@dimen/vertical_margin"
+                    android:layout_marginEnd="@dimen/horizontal_margin"
+                    android:background="@drawable/edittext_background"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="top"
+                    android:hint="@string/hint_task_description"
+                    android:padding="@dimen/horizontal_margin"
+                    android:text="@={viewModel.messageBody}"
+                    android:textSize="13sp"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/sp_mohallahs"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/standard_margin"
+                    app:layout_constraintEnd_toEndOf="@id/description"
+                    app:layout_constraintStart_toStartOf="@id/description"
+                    app:layout_constraintTop_toBottomOf="@id/description"
+                    app:spItemsList="@{viewModel.mohallahs}" />
+
+                <View
+                    android:id="@+id/line"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/color_grey"
+                    android:layout_marginTop="@dimen/standard_margin"
+                    app:layout_constraintStart_toStartOf="@id/sp_mohallahs"
+                    app:layout_constraintEnd_toEndOf="@id/sp_mohallahs"
+                    app:layout_constraintTop_toBottomOf="@id/sp_mohallahs"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_contacts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/standard_margin"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/line"
+                    app:hasFixSize="@{true}"
+                    app:itemLayout="@{@layout/item_parents_list}"
+                    app:itemsList="@{viewModel.parents}"
+                    tools:listitem="@layout/item_parents_list"
+                    android:paddingBottom="@dimen/standard_margin"
+                    android:clipToPadding="false"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.progressbarVisibility}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

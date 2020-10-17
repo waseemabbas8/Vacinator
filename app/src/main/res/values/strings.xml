@@ -47,4 +47,6 @@
     <string name="title_query">Query Details</string>
     <string name="label_add_polio">Add Polio</string>
 
+    <string name="option_message">Send Messages</string>
+
 </resources>

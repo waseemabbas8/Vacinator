@@ -56,4 +56,9 @@ interface Api {
     suspend fun getQueriesByCouncilId(
         @Query("ucid") ucId: Int
     ): Response<BaseResponse<List<QueryModel>>>
+
+    @GET("GetParentByMuhallaID")
+    suspend fun getParentsByMoh(
+        @Query("mid") mohId: Int
+    ): Response<BaseResponse<List<ParentModel>>>
 }
