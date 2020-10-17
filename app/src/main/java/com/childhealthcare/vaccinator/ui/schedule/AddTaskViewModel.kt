@@ -1,6 +1,7 @@
 package com.childhealthcare.vaccinator.ui.schedule
 
 import android.util.Log
+import android.view.View
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -32,8 +33,13 @@ class AddTaskViewModel(
     val generalResponse: LiveData<GeneralResponse>
     private val _generalResponse = MutableLiveData<GeneralResponse>()
 
+    val progressbarVisibility: LiveData<Int>
+    private val _progressbarVisibility = MutableLiveData<Int>()
+
     init {
         generalResponse = _generalResponse
+        progressbarVisibility = _progressbarVisibility
+        _progressbarVisibility.value = View.GONE
 
         val c = Calendar.getInstance()
         year.value = c.get(Calendar.YEAR)
@@ -49,8 +55,9 @@ class AddTaskViewModel(
     fun addTask() {
         viewModelScope.launch {
             _generalResponse.postValue(null)
+            _progressbarVisibility.value = View.VISIBLE
             try {
-                val date = "${day.value}-${month.value?.plus(1)}-${year.value}"
+                val date = "${month.value?.plus(1)}-${day.value}-${year.value}"
                 val time = "${hours.value}:${minutes.value}"
                 Log.d("DateTime", date)
                 Log.d("DateTime", time)
@@ -72,6 +79,7 @@ class AddTaskViewModel(
             } catch (t: Throwable) {
                 _generalResponse.postValue(GeneralResponse(RESPONSE_CODE_ERROR, t.message.toString()))
             }
+            _progressbarVisibility.value = View.GONE
         }
     }
 
