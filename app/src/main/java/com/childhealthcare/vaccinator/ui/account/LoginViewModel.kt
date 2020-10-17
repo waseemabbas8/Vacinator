@@ -1,16 +1,15 @@
 package com.childhealthcare.vaccinator.ui.account
 
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.childhealthcare.vaccinator.data.ApiRepository
-import com.childhealthcare.vaccinator.data.PrefRepository
-import com.childhealthcare.vaccinator.data.RESPONSE_CODE_ERROR
-import com.childhealthcare.vaccinator.data.RESPONSE_CODE_OK
+import com.childhealthcare.vaccinator.data.*
 import com.childhealthcare.vaccinator.model.common.GeneralResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.io.IOException
 
 class LoginViewModel(
     private val repository: ApiRepository,
@@ -31,7 +30,8 @@ class LoginViewModel(
                     }
                 }
             } catch (e: Exception) {
-                result.postValue(GeneralResponse(RESPONSE_CODE_ERROR, e.message.toString()))
+                val msg = if (e is IOException) MSG_INTERNET_FAILURE else e.message.toString()
+                result.postValue(GeneralResponse(RESPONSE_CODE_ERROR, msg))
             } catch (t: Throwable) {
                 result.postValue(GeneralResponse(RESPONSE_CODE_ERROR, t.message.toString()))
             }

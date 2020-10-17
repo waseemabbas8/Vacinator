@@ -7,11 +7,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.childhealthcare.vaccinator.data.ApiRepository
+import com.childhealthcare.vaccinator.data.MSG_INTERNET_FAILURE
 import com.childhealthcare.vaccinator.data.RESPONSE_CODE_ERROR
 import com.childhealthcare.vaccinator.model.TodoTask
 import com.childhealthcare.vaccinator.model.common.GeneralResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.io.IOException
 import java.lang.Exception
 
 class TasksListViewModel(
@@ -45,7 +47,8 @@ class TasksListViewModel(
                     }
                 }
             } catch (e: Exception) {
-                _generalResponse.postValue(GeneralResponse(RESPONSE_CODE_ERROR, e.message ?: "ERROR"))
+                val msg = if (e is IOException) MSG_INTERNET_FAILURE else e.message.toString()
+                _generalResponse.postValue(GeneralResponse(RESPONSE_CODE_ERROR, msg))
             } catch (t: Throwable) {
                 _generalResponse.postValue(GeneralResponse(RESPONSE_CODE_ERROR, t.message ?: "ERROR"))
             }
